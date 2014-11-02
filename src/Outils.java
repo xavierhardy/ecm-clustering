@@ -18,15 +18,12 @@
 */
 
 import java.awt.Color;
-import java.awt.Point;
 import java.io.File;
-import java.util.Random;
 import java.util.Vector;
 
 import Symbole.SymboleCarre;
 import Symbole.SymboleCarreC;
 import Symbole.SymboleCarreP;
-import Symbole.SymboleCase;
 import Symbole.SymboleCroix;
 import Symbole.SymboleDiamant;
 import Symbole.SymboleDiamantC;
@@ -41,9 +38,6 @@ import Symbole.SymboleRondP;
 import Symbole.SymboleTriangle;
 import Symbole.SymboleTriangleP;
 import Symbole.SymboleVide;
-
-import Convexe.PointD;
-
 
 public class Outils {
 

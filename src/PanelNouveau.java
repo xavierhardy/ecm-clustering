@@ -17,15 +17,11 @@
     along with ecm-classifier.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 import Forme.FormeAbstraite;
 import Forme.FormeCarree;
@@ -35,21 +31,21 @@ import Random.RandomExp;
 import Random.RandomGauss;
 import Random.RandomUniform;
 
-
 public class PanelNouveau extends JPanel {
+	private static final long serialVersionUID = -5277427055243813310L;
 	private SpringLayoutExt sl = new SpringLayoutExt(this);
 	private JLabel labelDistrib = new JLabel("Distribution:");
 	private AbstractRandom[] listDistrib = {new RandomUniform(), new RandomGauss(), new RandomExp()};
 	
-	private JComboBox comboDistrib;
+	private JComboBox<String> comboDistrib;
 	
 	private JLabel labelType = new JLabel("Forme de l'ensemble:");
 	private FormeAbstraite[] listFormes = {new FormeCarree(), new FormeRonde()};
 
-	private JComboBox comboFormes;
+	private JComboBox<String> comboFormes;
 
 	private JLabel labelCentres = new JLabel("Centres des classes:");
-	private JComboBox comboCentres;
+	private JComboBox<String> comboCentres;
 	
 	private JLabel labelNbClasses = new JLabel("Nombre de classes:");
 	public JTextField textFieldNbClasses = new JTextField("4", 3);
@@ -74,17 +70,17 @@ public class PanelNouveau extends JPanel {
 		String[] listNoms = new String[listDistrib.length];
 		
 		for(int i = 0; i < listNoms.length; i++) listNoms[i] = listDistrib[i].toString();
-		comboDistrib = new JComboBox(listNoms);
+		comboDistrib = new JComboBox<String>(listNoms);
 		
 		listNoms = new String[listDistrib.length + 1];
 		
 		listNoms[0] = "Repartition reguliere (cercle)";
 		for(int i = 1; i < listNoms.length; i++) listNoms[i] = listDistrib[i-1].toString();
-		comboCentres = new JComboBox(listNoms);
+		comboCentres = new JComboBox<String>(listNoms);
 		
 		listNoms = new String[listFormes.length];
 		for(int i = 0; i < listNoms.length; i++) listNoms[i] = listFormes[i].toString();
-		comboFormes = new JComboBox(listNoms);			
+		comboFormes = new JComboBox<String>(listNoms);			
 		
 		this.add(comboDistrib);
 		sl.mettreEnHaut(comboDistrib);

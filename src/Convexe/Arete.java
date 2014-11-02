@@ -18,7 +18,6 @@
 */
 
 package Convexe;
-import java.util.Vector;
 
 
 public class Arete {

@@ -20,7 +20,6 @@
 package Symbole;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.IOException;
 
 public abstract class Symbole {
 	protected Color couleur;

@@ -18,7 +18,6 @@
 */
 
 package Forme;
-import java.awt.Point;
 
 import Convexe.PointD;
 import Random.AbstractRandom;
@@ -29,7 +28,7 @@ public abstract class FormeAbstraite {
 	protected double r;
 	
 	public FormeAbstraite(){
-		this.rnd = rnd = new RandomUniform();
+		this.rnd = new RandomUniform();
 		this.r = 1;
 	}
 	

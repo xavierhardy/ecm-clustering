@@ -18,7 +18,6 @@
 */
 
 package Forme;
-import java.awt.Point;
 
 import Convexe.PointD;
 import Random.AbstractRandom;

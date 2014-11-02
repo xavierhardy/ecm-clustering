@@ -25,13 +25,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-import javax.swing.JOptionPane;
-
-import Convexe.Droite;
 import Convexe.PointD;
 import Forme.FormeAbstraite;
 import Forme.FormeCarree;
-import Random.AbstractRandom;
 import Random.RandomGauss;
 
 public class Main {
@@ -104,9 +100,6 @@ public class Main {
 		FormeAbstraite forme = new FormeCarree();
 		forme.setParams(new RandomGauss(), 0.5);
 		
-
-		AbstractRandom rndCentre = new RandomGauss();
-		
 		for(int k = 0; k < 100000; k++){
 			for(n = 10; n < 10000; n *= 2){
 				for(dim = 1; dim <= 50; dim++){
@@ -133,7 +126,7 @@ public class Main {
 							}
 						}
 						double dep = System.currentTimeMillis();
-						ECM ecm = new ECM(points, nbClasses, alpha, beta, delta, epsilon);
+						new ECM(points, nbClasses, alpha, beta, delta, epsilon);
 						double time = System.currentTimeMillis() - dep;
 						OutputStreamWriter destination = new OutputStreamWriter(new FileOutputStream(new File("test" + numTest + ".csv")));
 						destination.write("n;dim;nbClasses;temps;k\n" + n + ";" + dim + ";" + nbClasses + ";" + time + ";"+ k);

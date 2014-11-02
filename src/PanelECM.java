@@ -22,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PanelECM extends JPanel {
+	private static final long serialVersionUID = 3428805294675127204L;
+
 	private SpringLayoutExt sl = new SpringLayoutExt(this);
 	
 	private JLabel labelNbClasses = new JLabel("Nombre de classes:");

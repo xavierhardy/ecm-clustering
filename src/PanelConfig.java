@@ -20,13 +20,11 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -41,8 +39,8 @@ import javax.swing.JTextField;
 
 import Symbole.*;
 
-
 public class PanelConfig extends JPanel {
+	private static final long serialVersionUID = -6101538151168973957L;
 	public Vector<Classe> classes;
 	private int classeEnCours = 0;
 	private ECM ecm;
@@ -54,15 +52,15 @@ public class PanelConfig extends JPanel {
 	private JLabel labelTaille = new JLabel("Taille des symboles:");
 	public JTextField textFieldTaille = new JTextField("4", 3);
 	
-	public JButton buttonAuto = new JButton("Configuration automatique des classes composées");
+	public JButton buttonAuto = new JButton("Configuration automatique des classes composï¿½es");
 	public ColorCanvas canvasCouleur = new ColorCanvas();
 	public HueCanvas canvasHue = new HueCanvas();
 
 	private JLabel labelClasses = new JLabel("Classes:");
-	private JComboBox comboClasses;
+	private JComboBox<Classe> comboClasses;
 	
 	private JLabel labelSymbole = new JLabel("Symbole:");
-	public JComboBox comboSymbole;
+	public JComboBox<Symbole> comboSymbole;
 	public SymbolCanvas canvasSymbole = new SymbolCanvas();
 	
 	private JCheckBox boxEnveloppe = new JCheckBox("Enveloppe convexe");
@@ -92,10 +90,9 @@ public class PanelConfig extends JPanel {
 			this.classes.add(classes.elementAt(i).clone());
 		}
 		
-		comboClasses = new JComboBox(this.classes);
+		comboClasses = new JComboBox<Classe>(this.classes);
 		
-		comboSymbole = new JComboBox(listSymboles);
-		new JComboBox();
+		comboSymbole = new JComboBox<Symbole>(listSymboles);
 				
 		this.add(labelTaille);
 		sl.mettreAGauche(labelTaille);
@@ -272,6 +269,8 @@ public class PanelConfig extends JPanel {
 	}
 	
 	class SymbolCanvas extends Canvas{
+		private static final long serialVersionUID = 2503253675587856695L;
+
 		public void paint(Graphics g){
 			int size = canvasSymbole.getHeight();
 			g.setColor(Color.white);
@@ -283,6 +282,7 @@ public class PanelConfig extends JPanel {
 	}
 	
 	class ColorCanvas extends Canvas implements MouseMotionListener{
+		private static final long serialVersionUID = -231531604223290769L;
 		private int x;
 		private int y;
 		private int taille = 2; //On dessine des carres pour accelerer l'affichage
@@ -330,6 +330,7 @@ public class PanelConfig extends JPanel {
 	}
 	
 	class HueCanvas extends Canvas implements MouseMotionListener{
+		private static final long serialVersionUID = -194748212992096976L;
 		private int y;
 		
 		public HueCanvas(){

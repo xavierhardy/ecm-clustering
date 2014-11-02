@@ -21,14 +21,14 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.JTextField;
 
-	class HostedUnitFieldFocusListener implements FocusListener{
+class NumberFieldFocusListener implements FocusListener{
 
-		public void focusGained(FocusEvent e) {
-		}
-
-		public void focusLost(FocusEvent e) {
-			JTextField champTexte = (JTextField)(e.getSource());
-			champTexte.setText(Outils.number(champTexte.getText()));
-		}
-		
+	public void focusGained(FocusEvent e) {
 	}
+
+	public void focusLost(FocusEvent e) {
+		JTextField champTexte = (JTextField)(e.getSource());
+		champTexte.setText(Outils.number(champTexte.getText()));
+	}
+
+}

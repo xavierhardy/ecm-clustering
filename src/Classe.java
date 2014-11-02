@@ -21,7 +21,6 @@ import java.awt.Color;
 
 import Convexe.Convexe;
 import Symbole.Symbole;
-import Symbole.SymboleCroix;
 
 
 public class Classe {

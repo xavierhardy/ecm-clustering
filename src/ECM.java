@@ -17,9 +17,11 @@
     along with ecm-classifier.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.Vector;
-import java.awt.Color;
-import java.io.*;
 
 public class ECM {
 	private double[][] ensembleDePoints, V, Vplus,  M, H, B, D, N, K;
@@ -101,7 +103,7 @@ public class ECM {
 		for (int j=0 ;j<k ;j++){
 			int j2 = j;
 			for (int i=0; i<nombreDeClasses;i++){
-				if (j2%2  != 0) S[i][j] = 1; //S[i][j] est par défaut à 0
+				if (j2%2  != 0) S[i][j] = 1; //S[i][j] est par dï¿½faut ï¿½ 0
 				j2 = j2/2;
 			}
 		}

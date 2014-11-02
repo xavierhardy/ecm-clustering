@@ -62,6 +62,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class Fenetre extends JFrame{
+	private static final long serialVersionUID = 5668823652344014459L;
 	private Fenetre fenetre = this;
 	private File fichierEnCours = new File("temp.csv");
 	
@@ -121,7 +122,7 @@ public class Fenetre extends JFrame{
 	private ECM ecm = null;
 	
 	//Panneau d'information (nord)
-	private JLabel labelInfo = new JLabel("Taper un nombre et cliquer sur Générer");
+	private JLabel labelInfo = new JLabel("Taper un nombre et cliquer sur Gï¿½nï¿½rer");
 
 	//Enveloppe
 	private int enveloppe = 0; //0 aucune, 1 restreinte, 2 large
@@ -136,6 +137,7 @@ public class Fenetre extends JFrame{
 		menuAffichage.setEnabled(false);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void activerMenu() {
 		menuAffichage.setEnabled(true);
 		vectClasses = (Vector<Classe>) Outils.classesParDefaut.clone();
@@ -323,7 +325,7 @@ public class Fenetre extends JFrame{
 	        selecteur.addChoosableFileFilter(new FiltreFichiersSimple("csv","Fichier CSV, Points et resultats","Fichier CSV, Points et resultats (*.csv)"));
 	        selecteur.setAcceptAllFileFilterUsed(false);
 			int reponse = selecteur.showOpenDialog(fenetre);
-			if(reponse == selecteur.APPROVE_OPTION) {
+			if(reponse == JFileChooser.APPROVE_OPTION) {
 				File f = selecteur.getSelectedFile();
         		charger(f);
         	}
@@ -336,7 +338,7 @@ public class Fenetre extends JFrame{
 				
 				String[] colonnes = lecteur.readLine().split(";");
 				
-				//Pour simplifier le travail du programme, on ajoute une première ligne qui contient le nombre de points, le nombre de dimensions, et de classes
+				//Pour simplifier le travail du programme, on ajoute une premiï¿½re ligne qui contient le nombre de points, le nombre de dimensions, et de classes
 				n = Integer.parseInt(colonnes[0]);
 				dim = Integer.parseInt(colonnes[1]);
 				nbClasses = Integer.parseInt(colonnes[2]);
@@ -393,7 +395,7 @@ public class Fenetre extends JFrame{
 	        selecteur.addChoosableFileFilter(new FiltreFichiersSimple("csv","Fichier CSV, Points et resultats","Fichier CSV, Points et resultats (*.csv)"));
 	        selecteur.setAcceptAllFileFilterUsed(false);
 			int reponse = selecteur.showSaveDialog(fenetre);
-			if(reponse == selecteur.APPROVE_OPTION) {
+			if(reponse == JFileChooser.APPROVE_OPTION) {
 				File f = selecteur.getSelectedFile();
         		sauver(f);
         	}
@@ -406,7 +408,7 @@ public class Fenetre extends JFrame{
 	        selecteur.addChoosableFileFilter(new FiltreFichiersSimple("csv","Fichier CSV, Ensemble de points","Fichier CSV, Ensemble de points (*.csv)"));
 	        selecteur.setAcceptAllFileFilterUsed(false);
 			int reponse = selecteur.showOpenDialog(fenetre);
-			if(reponse == selecteur.APPROVE_OPTION) {
+			if(reponse == JFileChooser.APPROVE_OPTION) {
 				File f = selecteur.getSelectedFile();
         		importer(f);
         	}
@@ -419,7 +421,7 @@ public class Fenetre extends JFrame{
 				
 				String[] colonnes = lecteur.readLine().split(";");
 				
-				//Pour simplifier le travail du programme, on ajoute une première ligne qui contient le nombre de points et le nombre de dimensions
+				//Pour simplifier le travail du programme, on ajoute une premiï¿½re ligne qui contient le nombre de points et le nombre de dimensions
 				n = Integer.parseInt(colonnes[0]);
 				dim = Integer.parseInt(colonnes[1]);
 				
@@ -435,6 +437,7 @@ public class Fenetre extends JFrame{
 				OutilsMatriciels.imprime(points);
 				pan.init();
 				activerECM();
+				lecteur.close();
 			} catch (FileNotFoundException exception) {
 				JOptionPane.showMessageDialog(fenetre,	"Fichier introuvable.","Erreur",JOptionPane.ERROR_MESSAGE);
 				exception.printStackTrace();
@@ -454,7 +457,7 @@ public class Fenetre extends JFrame{
 	        selecteur.setAcceptAllFileFilterUsed(false);
 	         
 			int reponse = selecteur.showSaveDialog(fenetre);
-			if(reponse == selecteur.APPROVE_OPTION) {
+			if(reponse == JFileChooser.APPROVE_OPTION) {
 				File f = selecteur.getSelectedFile();
 				try {
 					if(Outils.getExtension(f).equals("csv")) ecm.exporte(f);
@@ -480,7 +483,7 @@ public class Fenetre extends JFrame{
 	         
 			int reponse = selecteur.showSaveDialog(fenetre);
 			
-			if(reponse == selecteur.APPROVE_OPTION) {
+			if(reponse == JFileChooser.APPROVE_OPTION) {
 				File f = selecteur.getSelectedFile();
 				try {
 					exporterImage(f);
@@ -563,6 +566,7 @@ public class Fenetre extends JFrame{
 	}
 	
 	class FenetreNouveau extends JFrame{
+		private static final long serialVersionUID = 153802530700488274L;
 		public FenetreNouveau fenNouveau = this;
 		private JPanel panPrincipal = new JPanel();
 		private JPanel panBoutons = new JPanel();
@@ -661,6 +665,7 @@ public class Fenetre extends JFrame{
 	}
 	
 	class FenetreECM extends JFrame{
+		private static final long serialVersionUID = -4755939154327099083L;
 		public FenetreECM fenECM = this;
 		private JPanel panPrincipal = new JPanel();
 		private JPanel panBoutons = new JPanel();
@@ -717,6 +722,7 @@ public class Fenetre extends JFrame{
 	}
 	
 	class FenetreConfig extends JFrame{
+		private static final long serialVersionUID = 4643808842165459471L;
 		public FenetreConfig fenConfig = this;
 		private JPanel panPrincipal = new JPanel();
 		private JPanel panBoutons = new JPanel();
@@ -774,7 +780,9 @@ public class Fenetre extends JFrame{
 	
 	
 
-	class Panneau extends Canvas implements MouseMotionListener, MouseListener, MouseWheelListener{		
+	class Panneau extends Canvas implements MouseMotionListener, MouseListener, MouseWheelListener{
+		private static final long serialVersionUID = -4692234322146197781L;
+
 		private boolean dessine = false;
 		
 		//Centre du canvas
@@ -859,7 +867,7 @@ public class Fenetre extends JFrame{
 			else
 			{
 				for(int i = 0; i < points.length; i++){
-					Classe classe = vectClasses.elementAt(classes[i]);
+					//Classe classe = vectClasses.elementAt(classes[i]);
 					iter = vectClasses.iterator();
 					while(iter.hasNext()){
 						Classe next = iter.next();
@@ -1092,7 +1100,7 @@ public class Fenetre extends JFrame{
 				labelInfo.setText("( " + points[i][0] + " ; " + points[i][1] + " )  Classe: " + vectClasses.elementAt(classes[i]).nom + " (" + (int)(M[i][classes[i]]*100)+ "%)");
 			}
 			else {
-				labelInfo.setText("Passez la souris sur un point pour plus de détails");
+				labelInfo.setText("Passez la souris sur un point pour plus de dï¿½tails");
 			}
 			
 			

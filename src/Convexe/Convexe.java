@@ -19,10 +19,8 @@
 
 package Convexe;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Iterator;
-import java.util.Stack;
 import java.util.Vector;
 
 public class Convexe {
@@ -137,7 +135,7 @@ public class Convexe {
 		return result;
 	}
 	
-	private static Vector concat(Vector v1, Vector v2){
+	private static <T> Vector<T> concat(Vector<T> v1, Vector<T> v2){
 		while(!v2.isEmpty()){
 			v1.add(v2.remove(0));
 		}
